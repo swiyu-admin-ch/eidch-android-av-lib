@@ -20,7 +20,7 @@ publishing {
     repositories {
         maven {
             name = "githubPackages"
-            url = uri("https://maven.pkg.github.com/admin-ch-ssi/PERA_av-wrapper-public_android")
+            url = uri("https://maven.pkg.github.com/swiyu-admin-ch/eidch-android-av-lib")
             credentials(PasswordCredentials::class) {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
@@ -38,7 +38,7 @@ mavenPublishing {
 
     pom {
         name = "AvWrapper no-op"
-        url = "https://github.com/admin-ch-ssi/PERA_av-wrapper-public_android"
+        url = "https://github.com/swiyu-admin-ch/eidch-android-av-lib"
         licenses {
             license {
                 name = "MIT"
@@ -47,7 +47,7 @@ mavenPublishing {
         }
 
         scm {
-            url = "https://github.com/admin-ch-ssi/PERA_av-wrapper-public_android"
+            url = "https://github.com/swiyu-admin-ch/eidch-android-av-lib"
         }
     }
 }
