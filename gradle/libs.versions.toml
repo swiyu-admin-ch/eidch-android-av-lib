@@ -1,9 +1,9 @@
 [versions]
-agp = "8.7.3"
-kotlin = "2.1.10"
+agp = "8.11.0"
+kotlin = "2.2.0"
 coreKtx = "1.16.0"
-appcompat = "1.7.0"
-mavenpublish = "0.31.0"
+appcompat = "1.7.1"
+mavenpublish = "0.33.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

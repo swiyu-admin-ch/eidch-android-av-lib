@@ -1,34 +1,42 @@
+@file:Suppress("TooManyFunctions")
+
 package ch.admin.foitt.avwrapper
 
+import android.content.Intent
 import android.view.SurfaceView
 import androidx.appcompat.app.AppCompatActivity
+import ch.admin.foitt.avwrapper.config.AVBeamCaptureFaceConfig
+import ch.admin.foitt.avwrapper.config.AVBeamConfigLogLevel
+import ch.admin.foitt.avwrapper.config.AVBeamRecordDocumentConfig
+import ch.admin.foitt.avwrapper.config.AVBeamScanDocumentConfig
+import ch.admin.foitt.avwrapper.config.AVBeamScanNfcConfig
 import kotlinx.coroutines.flow.StateFlow
 
 /**
-=============================================
-Service(s) interface definition:
-=============================================
+ * AVBeam Interface
+ *
+ * Defines core functionalities for AV-based services, including
+ * document scanning, document recording, face capture, and NFC scanning.
  */
-
-/// AVBeam Interface
-///
-/// Defines core functionalities for AV-based services, including
-/// document scanning, document recording, face capture, and NFC scanning.
-
 interface AVBeam {
 
-    fun init(config: AVBeamInitConfig)
+    fun init(config: AVBeamInitConfig, activity: AppCompatActivity)
 
-    suspend fun startScanDocument(config: AVBeamScanDocumentConfig): Result<AVBeamPackageResult>
+    fun shutDown()
+
+    suspend fun startScanDocument(config: AVBeamScanDocumentConfig)
     fun stopScanDocument()
 
-    suspend fun startRecordingDocument(config: AVBeamRecordDocumentConfig): Result<AVBeamPackageResult>
+    suspend fun startRecordingDocument(config: AVBeamRecordDocumentConfig)
     fun stopRecordingDocument()
 
-    suspend fun startCaptureFace(config: AVBeamCaptureFaceConfig): Result<AVBeamPackageResult>
+    suspend fun startCaptureFace(config: AVBeamCaptureFaceConfig)
     fun stopCaptureFace()
 
-    suspend fun startScanNfc(config: AVBeamScanNfcConfig): Result<AVBeamPackageResult>
+    suspend fun startScanNfc(
+        documentScanPackageResult: DocumentScanPackageResult,
+        config: AVBeamScanNfcConfig,
+    )
     fun stopScanNfc()
 
     // Dedicated flows for library feedback
@@ -36,36 +44,20 @@ interface AVBeam {
     val recordDocumentFlow: StateFlow<AvBeamRecordDocumentNotification>
     val captureFaceFlow: StateFlow<AvBeamCaptureFaceNotification>
     val scanNfcFlow: StateFlow<AvBeamScanNfcNotification>
+    val errorFlow: StateFlow<AVBeamError>
+    val statusFlow: StateFlow<AVBeamStatus>
+    val initializedFlow: StateFlow<Boolean>
 
-    //Android Lifecycle-specific methods
+    // Android Lifecycle-specific methods
     fun setActivity(activity: AppCompatActivity)
-    fun getGLView(height: Int, width: Int): SurfaceView
+    fun getGLView(width: Int, height: Int): SurfaceView
     fun stopCamera()
     fun startCamera()
+    fun startFrontCamera()
+    fun initNfcCardReader(activity: AppCompatActivity, nfcServerDockerUrl: String)
+    fun onNewIntentNfc(intent: Intent)
+    fun onPauseNfc()
 }
-
-interface AvBeamNotification {
-    data object exampleNotification1 :
-        AvBeamScanDocumentNotification,
-        AvBeamRecordDocumentNotification,
-        AvBeamCaptureFaceNotification
-
-    data object exampleNotification2 :
-        AvBeamScanDocumentNotification,
-        AvBeamScanNfcNotification
-}
-
-sealed interface AvBeamScanDocumentNotification
-sealed interface AvBeamRecordDocumentNotification
-sealed interface AvBeamCaptureFaceNotification
-sealed interface AvBeamScanNfcNotification
 
 // Config classes
-data class AVBeamInitConfig(val exampleParam: Any)
-data class AVBeamScanDocumentConfig(val exampleParam: Any)
-data class AVBeamRecordDocumentConfig(val exampleParam: Any)
-data class AVBeamCaptureFaceConfig(val exampleParam: Any)
-data class AVBeamScanNfcConfig(val exampleParam: Any)
-
-// Result wrapper
-data class AVBeamPackageResult(val exampleParam: Any)
+data class AVBeamInitConfig(val logLevel: AVBeamConfigLogLevel)

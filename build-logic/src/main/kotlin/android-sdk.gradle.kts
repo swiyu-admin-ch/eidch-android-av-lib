@@ -1,6 +1,9 @@
+import groovyjarjarantlr4.v4.runtime.misc.RuleDependencyChecker.checkDependencies
+
 plugins {
     id("android-common")
     id("com.android.library")
+    id("jacoco-android-sdk")
 }
 
 android {
@@ -23,10 +26,10 @@ android {
     }
 
     kotlin {
-        jvmToolchain(17)
-    }
-    kotlinOptions {
-        allWarningsAsErrors = true
+        jvmToolchain(21)
+        compilerOptions {
+            allWarningsAsErrors.set(true)
+        }
     }
 
     lint {
