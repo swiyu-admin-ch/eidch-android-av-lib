@@ -1,3 +1,6 @@
 package ch.admin.foitt.avwrapper
 
-class AVBeamExtractDataList
+@Suppress("FunctionOnlyReturningConstant")
+class AVBeamExtractDataList {
+    fun size(): Int = 0
+}

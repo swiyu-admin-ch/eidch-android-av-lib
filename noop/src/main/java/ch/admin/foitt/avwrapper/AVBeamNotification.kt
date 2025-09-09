@@ -16,7 +16,7 @@ sealed interface AvBeamNotification {
     data class Error(val packageData: AVBeamPackageResult?) :
         AvBeamNotification,
         AvBeamScanDocumentNotification
-    data class Completed(val packageData: AVBeamPackageResult?) :
+    data class Completed(val packageData: AVBeamPackageResult) :
         AvBeamNotification,
         AvBeamRecordDocumentNotification,
         AvBeamCaptureFaceNotification,
