@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "ch.admin.foitt.avwrapper"
-version = "0.3.0"
+version = "0.5.0"
 val packageName = "AvWrapper"
 
 android {
@@ -16,19 +16,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "githubPackages"
-            url = uri("https://maven.pkg.github.com/swiyu-admin-ch/eidch-android-av-lib")
-            credentials(PasswordCredentials::class) {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-}
-
 mavenPublishing {
     coordinates(
         group.toString(),
@@ -38,6 +25,8 @@ mavenPublishing {
 
     pom {
         name = "AvWrapper no-op"
+        description = "This project contains a library required for building the swiyu Android wallet. It is a no-op implementation of the library used during the e-ID request flow."
+        inceptionYear = "2025"
         url = "https://github.com/swiyu-admin-ch/eidch-android-av-lib"
         licenses {
             license {
@@ -45,9 +34,17 @@ mavenPublishing {
                 url = "https://opensource.org/licenses/MIT"
             }
         }
-
+        developers {
+            developer {
+                id = "swiyu-admin-ch"
+                name = "swiyu - the Swiss Trust Infrastructure ecosystem"
+                url = "https://github.com/swiyu-admin-ch"
+            }
+        }
         scm {
             url = "https://github.com/swiyu-admin-ch/eidch-android-av-lib"
+            connection = "scm:git:git://github.com/swiyu-admin-ch/eidch-android-av-lib.git"
+            developerConnection = "scm:git:ssh://git@github.com/swiyu-admin-ch/eidch-android-av-lib.git.git"
         }
     }
 }

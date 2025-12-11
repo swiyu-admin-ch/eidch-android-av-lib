@@ -1,7 +1,7 @@
 package ch.admin.foitt.avwrapper
 
 enum class AVBeamError {
-    Empty
+    None
 }
 
 enum class AVBeamErrorType {

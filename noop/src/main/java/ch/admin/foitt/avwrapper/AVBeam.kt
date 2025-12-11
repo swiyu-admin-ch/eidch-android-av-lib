@@ -39,6 +39,8 @@ interface AVBeam {
     )
     fun stopScanNfc()
 
+    fun getMetadata(inputFiles: List<ByteArray>): AVBeamFileData
+
     // Dedicated flows for library feedback
     val scanDocumentFlow: StateFlow<AvBeamScanDocumentNotification>
     val recordDocumentFlow: StateFlow<AvBeamRecordDocumentNotification>
@@ -56,6 +58,7 @@ interface AVBeam {
     fun startFrontCamera()
     fun initNfcCardReader(activity: AppCompatActivity, nfcServerDockerUrl: String)
     fun onNewIntentNfc(intent: Intent)
+    fun onResumeNfc()
     fun onPauseNfc()
 }
 

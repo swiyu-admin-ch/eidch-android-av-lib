@@ -15,7 +15,8 @@ sealed interface AvBeamNotification {
         AvBeamScanNfcNotification
     data class Error(val packageData: AVBeamPackageResult?) :
         AvBeamNotification,
-        AvBeamScanDocumentNotification
+        AvBeamScanDocumentNotification,
+        AvBeamScanNfcNotification
     data class Completed(val packageData: AVBeamPackageResult) :
         AvBeamNotification,
         AvBeamRecordDocumentNotification,

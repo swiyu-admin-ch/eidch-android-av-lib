@@ -59,13 +59,22 @@ class AVBeamImpl : AVBeam {
         // No-op
     }
 
+    override fun getMetadata(inputFiles: List<ByteArray>): AVBeamFileData {
+        // No-op
+        return AVBeamFileData(
+            fileType = AvBeamFileType.UNKNOWN,
+            fileDescription = "",
+            fileData = byteArrayOf()
+        )
+    }
+
     override val scanDocumentFlow: StateFlow<AvBeamScanDocumentNotification> =
         MutableStateFlow(AvBeamNotification.Empty)
     override val recordDocumentFlow: StateFlow<AvBeamRecordDocumentNotification> =
         MutableStateFlow(AvBeamNotification.Empty)
     override val captureFaceFlow: StateFlow<AvBeamCaptureFaceNotification> = MutableStateFlow(AvBeamNotification.Empty)
     override val scanNfcFlow: StateFlow<AvBeamScanNfcNotification> = MutableStateFlow(AvBeamNotification.Empty)
-    override val errorFlow: StateFlow<AVBeamError> = MutableStateFlow(AVBeamError.Empty)
+    override val errorFlow: StateFlow<AVBeamError> = MutableStateFlow(AVBeamError.None)
     override val statusFlow: StateFlow<AVBeamStatus> = MutableStateFlow(AVBeamStatus.Empty)
     override val initializedFlow: StateFlow<Boolean> = MutableStateFlow(false)
 
@@ -98,6 +107,10 @@ class AVBeamImpl : AVBeam {
     }
 
     override fun onNewIntentNfc(intent: Intent) {
+        // No-op
+    }
+
+    override fun onResumeNfc() {
         // No-op
     }
 
