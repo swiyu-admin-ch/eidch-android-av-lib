@@ -11,6 +11,9 @@ data class DocumentScanPackageResult(
     val mrzValues: List<String>,
 ) {
     companion object {
+        const val MRZ_LINE1 = 64
+        const val MRZ_LINE2 = 65
+        const val MRZ_LINE3 = 66
         const val FILE_EXTRACT_DATA_LIST = "document_scan_data_list.json"
     }
 }

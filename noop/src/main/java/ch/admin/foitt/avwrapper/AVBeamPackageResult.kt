@@ -5,4 +5,5 @@ data class AVBeamPackageResult(
     val errorType: AVBeamErrorType = AVBeamErrorType.None,
     val errorCode: AVBeamError = AVBeamError.None,
     val files: AVBeamFilesDataList?,
+    val nfcErrorCode: AVBeamError = AVBeamError.None,
 )
