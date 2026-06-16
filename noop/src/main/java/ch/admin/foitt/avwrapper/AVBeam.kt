@@ -25,6 +25,9 @@ interface AVBeam {
     fun shutDown()
 
     suspend fun startScanDocument(config: AVBeamScanDocumentConfig)
+
+    fun notifySecondScan()
+
     fun stopScanDocument()
 
     suspend fun startRecordingDocument(config: AVBeamRecordDocumentConfig)

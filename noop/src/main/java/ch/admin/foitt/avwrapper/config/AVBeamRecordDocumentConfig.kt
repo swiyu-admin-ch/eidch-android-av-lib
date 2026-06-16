@@ -6,4 +6,5 @@ data class AVBeamRecordDocumentConfig(
     val timeout: Int = 0,
     val videoLength: Int = 0,
     val docRecVideoLength: Int = 0,
+    val expectSecondScanNotification: Boolean = false
 )

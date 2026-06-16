@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "ch.admin.foitt.avwrapper"
-version = "0.5.3"
+version = "0.5.4"
 val packageName = "AvWrapper"
 
 android {

@@ -8,6 +8,7 @@ data class DocumentScanPackageResult(
     val activeScenario: Int = 0,
     val dataLength: Int = 0,
     val files: AVBeamFilesDataList? = null,
+    val errorCodeList: MutableList<Int> = mutableListOf(),
     val mrzValues: List<String>,
 ) {
     companion object {

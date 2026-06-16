@@ -28,6 +28,10 @@ class AVBeamImpl : AVBeam {
         // No-op
     }
 
+    override fun notifySecondScan() {
+        // No-op
+    }
+
     override fun stopScanDocument() {
         // No-op
     }
