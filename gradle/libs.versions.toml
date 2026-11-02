@@ -1,11 +1,11 @@
 [versions]
-compileSdk = "37"
+compileSdk = "36"
 minSdk = "29"
 javaVersion = "21"
 agp = "9.2.1"
 coreKtx = "1.16.0"
 appcompat = "1.7.1"
-mavenpublish = "0.36.0"
+mavenpublish = "0.37.0"
 detekt = "1.23.8"
 jacoco = "0.8.11"
 

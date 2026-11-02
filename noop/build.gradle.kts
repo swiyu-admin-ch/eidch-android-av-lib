@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "ch.admin.foitt.avwrapper"
-val version = System.getenv("MAVEN_CENTRAL_version") ?: "0.6.0"
+val version = System.getenv("MAVEN_CENTRAL_version") ?: "0.6.1"
 val packageName = "AvWrapper"
 
 android {
