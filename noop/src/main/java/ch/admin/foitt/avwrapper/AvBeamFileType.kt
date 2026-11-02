@@ -5,7 +5,22 @@ package ch.admin.foitt.avwrapper
     "UnusedParameter",
 )
 enum class AvBeamFileType {
-    UNKNOWN;
+    UNKNOWN,
+    PDF,
+    PDF_CONTRACT,
+    XML,
+    JSON,
+    BMP,
+    JPG,
+    PNG,
+    MP4,
+    GIF,
+    M4V,
+    MOV,
+    WEBM,
+    DER,
+    EF,
+    BIN;
 
     fun toMimeType(): String = ""
 

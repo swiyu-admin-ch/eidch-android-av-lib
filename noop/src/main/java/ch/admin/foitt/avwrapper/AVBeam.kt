@@ -63,6 +63,7 @@ interface AVBeam {
     fun onNewIntentNfc(intent: Intent)
     fun onResumeNfc()
     fun onPauseNfc()
+    fun clearNotificationsFlow()
 }
 
 // Config classes

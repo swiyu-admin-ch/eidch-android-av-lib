@@ -1,16 +1,29 @@
 [versions]
-agp = "8.13.2"
-kotlin = "2.2.0"
+compileSdk = "37"
+minSdk = "29"
+javaVersion = "21"
+agp = "9.2.1"
 coreKtx = "1.16.0"
 appcompat = "1.7.1"
-mavenpublish = "0.35.0"
+mavenpublish = "0.36.0"
+detekt = "1.23.8"
+jacoco = "0.8.11"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
+# Convention plugin dependencies
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
 [plugins]
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 vanniktech-mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenpublish" }
 
+# Convention plugins (see build-logic/convention)
+avwrapper-android-library = { id = "avwrapper.android.library" }
+avwrapper-android-detekt = { id = "avwrapper.android.detekt" }
+avwrapper-android-lint = { id = "avwrapper.android.lint" }
+avwrapper-android-jacoco = { id = "avwrapper.android.jacoco" }

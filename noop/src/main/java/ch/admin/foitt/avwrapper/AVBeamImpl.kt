@@ -121,4 +121,8 @@ class AVBeamImpl : AVBeam {
     override fun onPauseNfc() {
         // No-op
     }
+
+    override fun clearNotificationsFlow() {
+        // No-op
+    }
 }
