@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.vanniktech.mavenPublish)
 }
 
-group = "ch.admin.foitt.avwrapper"
+group = "ch.admin.swiyu.mobile"
 val version = System.getenv("MAVEN_CENTRAL_version") ?: "0.6.1"
 val packageName = "AvWrapper"
 
@@ -19,7 +19,10 @@ dependencies {
 }
 
 mavenPublishing {
-    publishToMavenCentral(automaticRelease = false, validateDeployment = DeploymentValidation.NONE)
+    // Automatic releasing on MavenCentral after deployment is handled by setting gradle property 
+    // in .workflow/github/publish-release.yml
+    // See vanniktech.github.io/gradle-maven-publish-plugin/central/#uploading-with-automatic-publishing for details
+    publishToMavenCentral(validateDeployment = DeploymentValidation.NONE)
     signAllPublications()
 
     coordinates(
